@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -5,53 +6,603 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f4eee2">
 <title>As nossas Villas | Paraíso Villas & Spa</title>
-<style>
-:root{--cream:#f4eee2;--terracotta:#ad704d;--terracotta-hover:#965d3e;--text:#252321;--brown:#392719;--muted:#76533b;--line:#d3b79c}
-*{box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--text);text-align:center;margin:0;min-height:100vh;padding:0 22px 40px}
-a{color:inherit}
-.page{width:100%;max-width:900px;margin:0 auto;padding-top:35px}
-.logo{display:block;width:min(100%,420px);height:auto;margin:0 auto 12px;mix-blend-mode:multiply}
-.kicker{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-h1{font-size:clamp(30px,5vw,46px);color:var(--brown);margin:8px 0 12px}
-h2{font-size:clamp(21px,3vw,28px);color:var(--brown);margin:0 0 10px}
-.lead{font-size:clamp(16px,2.2vw,20px);line-height:1.55;color:#594435;max-width:680px;margin:0 auto}
-.actions{display:grid;gap:18px;margin:36px auto 30px;max-width:780px}
-.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-decoration:none;background:var(--terracotta);color:#21150f;border:0;border-radius:13px;padding:20px 16px;min-height:125px;font-size:clamp(18px,2.6vw,25px);font-weight:600;box-shadow:0 1px 2px rgb(0 0 0 / 8%);transition:background .15s ease,transform .15s ease}
-.btn:hover{background:var(--terracotta-hover);color:#fffaf5}
-.btn small{font-size:14px;font-weight:400;line-height:1.4}
-.btn.main{min-height:145px}
-.secondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:780px;margin:0 auto}
-.secondary .btn{min-height:112px;padding:17px 10px;font-size:17px}
-.symbol{font-size:27px;line-height:1}
-.back{display:inline-block;margin:8px auto 22px;padding:12px 18px;background:#555;color:#fff;text-decoration:none;border-radius:7px}
-.back:hover{background:#3d3d3d}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;text-align:left;margin:28px auto;max-width:780px}
-.event-card{border:1px solid var(--line);border-radius:12px;padding:20px;background:rgba(255,255,255,.18)}
-.event-card p{line-height:1.55;margin:0;color:#594435}
-.event-card .symbol{margin-bottom:12px;color:#8a583a}
-.form{max-width:650px;margin:28px auto;text-align:left;display:grid;gap:14px}
-label{display:grid;gap:7px;font-weight:600;color:var(--brown)}
-input,select,textarea{width:100%;font:inherit;padding:12px;border:1px solid var(--line);border-radius:7px;background:#fffdf9;color:var(--text)}
-textarea{min-height:130px;resize:vertical}
-.submit{font:inherit;font-weight:600;cursor:pointer;border:0;border-radius:8px;padding:15px;background:var(--terracotta);color:#21150f}
-.note{font-size:13px;line-height:1.5;color:var(--muted)}
-@media(max-width:560px){body{padding:0 16px 28px}.page{padding-top:25px}.logo{width:min(100%,330px)}.secondary{gap:12px}.secondary .btn{font-size:15px;min-height:105px}.cards{grid-template-columns:1fr}.btn{border-radius:10px}}
-</style>
 
+<style>
+:root{
+  --cream:#f4eee2;
+  --terracotta:#ad704d;
+  --terracotta-hover:#965d3e;
+  --text:#252321;
+  --brown:#392719;
+  --muted:#76533b;
+  --line:#d3b79c;
+}
+
+*{box-sizing:border-box}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  text-align:center;
+  margin:0;
+  min-height:100vh;
+  padding:0 22px 40px;
+}
+
+a{color:inherit}
+
+.page{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  padding-top:35px;
+}
+
+.logo{
+  display:block;
+  width:min(100%,420px);
+  height:auto;
+  margin:0 auto 12px;
+  mix-blend-mode:multiply;
+}
+
+.kicker{
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 8px;
+}
+
+h1{
+  font-size:clamp(30px,5vw,46px);
+  color:var(--brown);
+  margin:8px 0 12px;
+}
+
+h2{
+  font-size:clamp(21px,3vw,28px);
+  color:var(--brown);
+  margin:0 0 10px;
+}
+
+.lead{
+  font-size:clamp(16px,2.2vw,20px);
+  line-height:1.55;
+  color:#594435;
+  max-width:680px;
+  margin:0 auto;
+}
+
+.back{
+  display:inline-block;
+  margin:8px auto 22px;
+  padding:12px 18px;
+  background:#555;
+  color:white;
+  text-decoration:none;
+  border-radius:7px;
+}
+
+.back:hover{background:#3d3d3d}
+
+/* SECÇÕES DAS VILLAS */
+
+.villa-section{
+  max-width:780px;
+  margin:42px auto;
+  text-align:left;
+}
+
+.villa-heading{
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.villa-heading h2{margin-bottom:8px}
+
+.villa-heading p{
+  color:var(--muted);
+  line-height:1.6;
+  margin:0 auto;
+  max-width:600px;
+}
+
+/* CARROSSEL */
+
+.carousel{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#e8dccb;
+  box-shadow:0 3px 12px rgb(57 39 25 / 8%);
+}
+
+.carousel-track{
+  display:flex;
+  transition:transform .35s ease;
+}
+
+.slide{
+  flex:0 0 100%;
+  width:100%;
+  aspect-ratio:16/10;
+  position:relative;
+  background:#e8dccb;
+}
+
+.slide img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.image-placeholder{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding:20px;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+
+.image-placeholder .symbol{font-size:38px}
+
+.carousel-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:43px;
+  height:43px;
+  border:0;
+  border-radius:50%;
+  background:rgba(244,238,226,.94);
+  color:var(--brown);
+  font-size:25px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 8px rgb(0 0 0 / 12%);
+  z-index:2;
+}
+
+.carousel-arrow:hover{
+  background:var(--terracotta);
+  color:white;
+}
+
+.carousel-arrow:focus-visible,
+.dot:focus-visible{
+  outline:3px solid var(--brown);
+  outline-offset:3px;
+}
+
+.carousel-arrow.prev{left:13px}
+.carousel-arrow.next{right:13px}
+
+.carousel-footer{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  padding:14px;
+  background:rgba(255,255,255,.25);
+}
+
+.carousel-count{
+  font-size:13px;
+  color:var(--muted);
+  min-width:65px;
+  text-align:center;
+}
+
+.dots{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:#c8ad91;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:var(--terracotta);
+  transform:scale(1.3);
+}
+
+/* CONTACTO */
+
+.contact-card{
+  max-width:650px;
+  margin:42px auto 0;
+  padding:25px 20px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(255,255,255,.18);
+}
+
+.contact-card p{
+  line-height:1.6;
+  color:#594435;
+}
+
+.btn{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  text-decoration:none;
+  background:var(--terracotta);
+  color:#21150f;
+  border-radius:12px;
+  padding:18px 16px;
+  min-height:90px;
+  font-size:18px;
+  font-weight:600;
+  transition:background .15s ease;
+}
+
+.btn:hover{
+  background:var(--terracotta-hover);
+  color:#fffaf5;
+}
+
+.note{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  margin-top:25px;
+}
+
+@media(max-width:560px){
+  body{padding:0 16px 28px}
+  .page{padding-top:25px}
+  .logo{width:min(100%,330px)}
+  .villa-section{margin:34px auto}
+  .slide{aspect-ratio:4/3}
+  .carousel-arrow{
+    width:38px;
+    height:38px;
+  }
+  .carousel-arrow.prev{left:9px}
+  .carousel-arrow.next{right:9px}
+  .carousel-footer{gap:10px;padding:12px}
+  .contact-card{padding:22px 15px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .carousel-track{transition:none}
+}
+</style>
 </head>
+
 <body>
 <main class="page">
-<img class="logo" src="logo-paraiso.png" alt="Paraíso Villas & Spa" onerror="this.style.display='none'">
 
-<a class="back" href="index.html">← Voltar à página inicial</a>
-<p class="kicker">Paraíso Villas & Spa</p><h1>As nossas Villas</h1>
-<p class="lead">Descubra as opções de alojamento do Paraíso Villas & Spa. Para informações sobre disponibilidade, capacidade ou estadias associadas a um evento, entre em contacto connosco.</p>
-<section class="event-card" style="margin:28px auto;max-width:650px;text-align:center">
-<h2>Informações e reservas</h2><p>Podemos ajudar a esclarecer dúvidas sobre as villas e a sua utilização no contexto do seu evento.</p>
-</section>
-<a class="btn" href="personalizar.html" style="max-width:560px;margin:0 auto">Fale connosco sobre o seu evento</a>
+  <img
+    class="logo"
+    src="logo-paraiso.png"
+    alt="Paraíso Villas & Spa"
+    onerror="this.style.display='none'"
+  >
+
+  <a class="back" href="index.html">
+    ← Voltar à página inicial
+  </a>
+
+  <p class="kicker">Paraíso Villas & Spa</p>
+
+  <h1>As nossas Villas</h1>
+
+  <p class="lead">
+    Descubra os nossos espaços de alojamento e encontre
+    a villa ideal para a sua estadia.
+  </p>
+
+  <!-- VILLAS T2 -->
+  <section class="villa-section">
+    <div class="villa-heading">
+      <h2>Villas T2</h2>
+      <p>
+        Mais espaço para partilhar momentos especiais
+        em família ou com amigos.
+      </p>
+    </div>
+
+    <div class="carousel" data-carousel="t2"
+         aria-label="Fotografias das Villas T2">
+      <div class="carousel-track"></div>
+      <button class="carousel-arrow prev" type="button"
+              aria-label="Fotografia anterior">‹</button>
+      <button class="carousel-arrow next" type="button"
+              aria-label="Fotografia seguinte">›</button>
+      <div class="carousel-footer">
+        <div class="dots"></div>
+        <span class="carousel-count" aria-live="polite">
+          A carregar...
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VILLAS T1 -->
+  <section class="villa-section">
+    <div class="villa-heading">
+      <h2>Villas T1</h2>
+      <p>
+        Conforto e tranquilidade para uma estadia a dois
+        ou uma escapadinha.
+      </p>
+    </div>
+
+    <div class="carousel" data-carousel="t1"
+         aria-label="Fotografias das Villas T1">
+      <div class="carousel-track"></div>
+      <button class="carousel-arrow prev" type="button"
+              aria-label="Fotografia anterior">‹</button>
+      <button class="carousel-arrow next" type="button"
+              aria-label="Fotografia seguinte">›</button>
+      <div class="carousel-footer">
+        <div class="dots"></div>
+        <span class="carousel-count" aria-live="polite">
+          A carregar...
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VILLAS T0 -->
+  <section class="villa-section">
+    <div class="villa-heading">
+      <h2>Villas T0</h2>
+      <p>
+        Um espaço acolhedor e funcional para desfrutar
+        de uma pausa.
+      </p>
+    </div>
+
+    <div class="carousel" data-carousel="t0"
+         aria-label="Fotografias das Villas T0">
+      <div class="carousel-track"></div>
+      <button class="carousel-arrow prev" type="button"
+              aria-label="Fotografia anterior">‹</button>
+      <button class="carousel-arrow next" type="button"
+              aria-label="Fotografia seguinte">›</button>
+      <div class="carousel-footer">
+        <div class="dots"></div>
+        <span class="carousel-count" aria-live="polite">
+          A carregar...
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact-card">
+    <h2>Informações e reservas</h2>
+    <p>
+      Para esclarecer dúvidas sobre as villas, a disponibilidade
+      ou estadias associadas a um evento, entre em contacto connosco.
+    </p>
+    <a class="btn" href="personalizar.html">
+      Fale connosco sobre o seu evento
+    </a>
+  </section>
+
+  <p class="note">Pevidém · Guimarães</p>
 
 </main>
+
+<script>
+/*
+  CONFIGURAÇÃO
+  Substitui pelos dados do teu repositório GitHub.
+*/
+const utilizador = "rececaoparaiso1995-spec";
+const repositorio = "eventos-qr";
+const ramo = "main";
+
+const pastas = {
+  t0: "imagens/villas-t0",
+  t1: "imagens/villas-t1",
+  t2: "imagens/villas-t2"
+};
+
+const extensoesPermitidas = /\.(jpe?g|png|webp|avif)$/i;
+
+/* MOSTRAR UMA MENSAGEM NO CARROSSEL */
+function mostrarMensagem(carrossel, mensagem){
+  const track = carrossel.querySelector(".carousel-track");
+  const contador = carrossel.querySelector(".carousel-count");
+
+  track.innerHTML = "";
+
+  const slide = document.createElement("div");
+  slide.className = "slide";
+
+  const placeholder = document.createElement("div");
+  placeholder.className = "image-placeholder";
+
+  const simbolo = document.createElement("span");
+  simbolo.className = "symbol";
+  simbolo.textContent = "⌂";
+
+  const texto = document.createElement("span");
+  texto.textContent = mensagem;
+
+  placeholder.append(simbolo, texto);
+  slide.appendChild(placeholder);
+  track.appendChild(slide);
+
+  contador.textContent = "";
+  carrossel.querySelector(".dots").replaceChildren();
+  carrossel.querySelectorAll(".carousel-arrow").forEach(b => {
+    b.hidden = true;
+  });
+}
+
+/* CONSTRUIR O CARROSSEL */
+function criarCarrossel(carrossel, tipo, imagens){
+  const track = carrossel.querySelector(".carousel-track");
+  const dotsContainer = carrossel.querySelector(".dots");
+  const contador = carrossel.querySelector(".carousel-count");
+  const anterior = carrossel.querySelector(".prev");
+  const seguinte = carrossel.querySelector(".next");
+
+  track.replaceChildren();
+  dotsContainer.replaceChildren();
+
+  if(!imagens.length){
+    mostrarMensagem(carrossel, "Não existem fotografias nesta pasta.");
+    return;
+  }
+
+  let indice = 0;
+
+  imagens.forEach((imagem, i) => {
+    const slide = document.createElement("div");
+    slide.className = "slide";
+
+    const placeholder = document.createElement("div");
+    placeholder.className = "image-placeholder";
+
+    const simbolo = document.createElement("span");
+    simbolo.className = "symbol";
+    simbolo.textContent = "⌂";
+
+    const texto = document.createElement("span");
+    texto.textContent = "A carregar fotografia...";
+
+    placeholder.append(simbolo, texto);
+
+    const img = document.createElement("img");
+    img.src = imagem;
+    img.alt = `Villa ${tipo.toUpperCase()} — fotografia ${i + 1}`;
+    img.loading = i === 0 ? "eager" : "lazy";
+    img.decoding = "async";
+
+    img.addEventListener("load", () => {
+      placeholder.remove();
+    });
+
+    img.addEventListener("error", () => {
+      img.remove();
+      texto.textContent = "Não foi possível carregar esta fotografia.";
+    });
+
+    slide.append(img, placeholder);
+    track.appendChild(slide);
+
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "dot";
+    dot.setAttribute("aria-label", `Ver fotografia ${i + 1}`);
+    dot.addEventListener("click", () => mostrar(i));
+
+    dotsContainer.appendChild(dot);
+  });
+
+  const slides = [...track.children];
+  const dots = [...dotsContainer.children];
+
+  function mostrar(n){
+    indice = (n + slides.length) % slides.length;
+
+    track.style.transform = `translateX(-${indice * 100}%)`;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === indice);
+
+      if(i === indice){
+        dot.setAttribute("aria-current", "true");
+      }else{
+        dot.removeAttribute("aria-current");
+      }
+    });
+
+    contador.textContent = `${indice + 1} / ${slides.length}`;
+  }
+
+  anterior.onclick = () => mostrar(indice - 1);
+  seguinte.onclick = () => mostrar(indice + 1);
+
+  anterior.hidden = slides.length <= 1;
+  seguinte.hidden = slides.length <= 1;
+  dotsContainer.hidden = slides.length <= 1;
+
+  mostrar(0);
+}
+
+/* DESCOBRIR AUTOMATICAMENTE AS FOTOGRAFIAS NO GITHUB */
+async function carregarImagens(carrossel, tipo, pasta){
+  const contador = carrossel.querySelector(".carousel-count");
+
+  try{
+    const url =
+      `https://api.github.com/repos/${encodeURIComponent(utilizador)}` +
+      `/${encodeURIComponent(repositorio)}/contents/${pasta}` +
+      `?ref=${encodeURIComponent(ramo)}`;
+
+    const resposta = await fetch(url);
+
+    if(!resposta.ok){
+      throw new Error(`Erro HTTP ${resposta.status}`);
+    }
+
+    const ficheiros = await resposta.json();
+
+    if(!Array.isArray(ficheiros)){
+      throw new Error("Resposta inesperada do GitHub.");
+    }
+
+    const imagens = ficheiros
+      .filter(f =>
+        f.type === "file" &&
+        extensoesPermitidas.test(f.name) &&
+        f.download_url
+      )
+      .sort((a,b) => a.name.localeCompare(b.name))
+      .map(f => f.download_url);
+
+    criarCarrossel(carrossel, tipo, imagens);
+
+  }catch(erro){
+    console.error(`Erro ao carregar ${pasta}:`, erro);
+    mostrarMensagem(
+      carrossel,
+      "Não foi possível carregar as fotografias. Verifique o repositório e o nome da pasta."
+    );
+    contador.textContent = "";
+  }
+}
+
+/* INICIALIZAR OS TRÊS CARROSSÉIS */
+document.querySelectorAll(".carousel").forEach(carrossel => {
+  const tipo = carrossel.dataset.carousel;
+  carregarImagens(carrossel, tipo, pastas[tipo]);
+});
+</script>
+
 </body>
 </html>
+```
