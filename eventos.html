@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4eee2">
+  <meta name="description" content="Descubra os eventos do Paraíso Villas & Spa, em Guimarães.">
+  <title>Eventos | Paraíso Villas &amp; Spa</title>
+
+  <style>
+    :root {
+      --creme: #f4eee2;
+      --branco: #fcfaf6;
+      --terracota: #ad704d;
+      --castanho: #392719;
+      --texto: #6d5847;
+      --linha: rgba(57, 39, 25, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--branco);
+      color: var(--castanho);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* CABEÇALHO */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244, 238, 226, 0.97);
+      border-bottom: 1px solid var(--linha);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      min-height: 82px;
+      margin: auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo img {
+      display: block;
+      width: 155px;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .header-contact {
+      font-size: 13px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--terracota);
+      padding-bottom: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    /* INTRODUÇÃO */
+
+    .hero {
+      background: var(--creme);
+      text-align: center;
+      padding: 85px 24px 58px;
+    }
+
+    .eyebrow {
+      color: var(--terracota);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      margin: 0 0 18px;
+    }
+
+    h1, h2, .subtitle {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 78px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 0;
+    }
+
+    .hero-description {
+      max-width: 600px;
+      margin: 22px auto 0;
+      color: var(--texto);
+      font-size: 15px;
+    }
+
+    /* NAVEGAÇÃO DOS EVENTOS */
+
+    .event-nav {
+      max-width: 1000px;
+      margin: 35px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .event-nav a {
+      display: inline-block;
+      padding: 9px 15px;
+      border: 1px solid rgba(173, 112, 77, 0.55);
+      border-radius: 30px;
+      font-size: 12px;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .event-nav a:hover,
+    .event-nav a:focus-visible {
+      background: var(--terracota);
+      color: white;
+    }
+
+    /* SECÇÕES */
+
+    main {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+
+    .event-section {
+      display: grid;
+      grid-template-columns: 0.85fr 1.5fr;
+      gap: 65px;
+      padding: 75px 0;
+      border-bottom: 1px solid var(--linha);
+      scroll-margin-top: 110px;
+    }
+
+    .event-number {
+      color: var(--terracota);
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin: 0 0 17px;
+    }
+
+    h2 {
+      font-size: clamp(29px, 3.5vw, 42px);
+      line-height: 1.22;
+      letter-spacing: -0.7px;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: var(--terracota);
+      font-size: clamp(21px, 2.5vw, 27px);
+      line-height: 1.4;
+      margin: 0 0 18px;
+    }
+
+    .event-description {
+      color: var(--texto);
+      font-size: 15px;
+      line-height: 1.95;
+      margin: 0;
+    }
+
+    /* CONTACTOS */
+
+    .contact-section {
+      margin: 65px 0;
+      padding: 55px 25px;
+      background: var(--creme);
+      text-align: center;
+      border: 1px solid var(--linha);
+    }
+
+    .contact-section h2 {
+      margin-bottom: 17px;
+    }
+
+    .contact-description {
+      max-width: 580px;
+      margin: 0 auto 28px;
+      color: var(--texto);
+      font-size: 14px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px 25px;
+    }
+
+    .contact-button {
+      display: inline-block;
+      background: var(--terracota);
+      color: white;
+      padding: 13px 23px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      transition: background 0.2s ease;
+    }
+
+    .contact-button:hover {
+      background: var(--castanho);
+    }
+
+    .contact-detail {
+      font-size: 13px;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      background: var(--castanho);
+      color: var(--creme);
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 12px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer a {
+      color: var(--creme);
+      text-underline-offset: 4px;
+    }
+
+    /* TELEMÓVEIS */
+
+    @media (max-width: 700px) {
+      .header-inner {
+        min-height: 70px;
+        padding: 10px 17px;
+      }
+
+      .logo img {
+        width: 125px;
+        max-height: 48px;
+      }
+
+      .header-contact {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 60px 20px 45px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .event-nav {
+        gap: 8px;
+      }
+
+      .event-nav a {
+        padding: 8px 11px;
+        font-size: 11px;
+      }
+
+      main {
+        padding: 0 22px;
+      }
+
+      .event-section {
+        grid-template-columns: 1fr;
+        gap: 17px;
+        padding: 45px 0;
+      }
+
+      .event-number {
+        margin-bottom: 10px;
+      }
+
+      .event-description {
+        font-size: 14px;
+        line-height: 1.85;
+      }
+
+      .contact-section {
+        margin: 40px 0;
+        padding: 38px 20px;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        gap: 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Página inicial">
+        <img src="logo-paraiso.png" alt="Paraíso Villas & Spa">
+      </a>
+
+      <a class="header-contact" href="#contactos">
+        Fale connosco
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Paraíso Villas &amp; Spa</p>
+
+    <h1>Eventos</h1>
+
+    <p class="hero-description">
+      Momentos especiais merecem um lugar à altura.
+      Descubra as possibilidades que temos para si.
+    </p>
+
+    <nav class="event-nav" aria-label="Navegação dos eventos">
+      <a href="#empresariais">Eventos empresariais</a>
+      <a href="#celebracoes">Batizados, Comunhões e Casamentos</a>
+      <a href="#aniversarios">Aniversários e Celebrações</a>
+      <a href="#catering">Catering e Gastronomia</a>
+      <a href="#despedidas">Despedidas de solteira</a>
+      <a href="#wellness">Retiros e Experiências Wellness</a>
+    </nav>
+  </section>
+
+  <main>
+
+    <!-- 1. REUNIÕES E EVENTOS EMPRESARIAIS -->
+
+    <section class="event-section" id="empresariais">
+      <div>
+        <p class="event-number">01 / EVENTOS</p>
+        <h2>Reuniões e Eventos Empresariais</h2>
+      </div>
+
+      <div>
+        <p class="event-description">O Paraíso combina natureza, conforto e versatilidade para criar eventos corporativos memoráveis. Com espaços exclusivos, alojamento, gastronomia e uma equipa dedicada, oferecemos soluções completas para reuniões, formações, lançamentos de produto, team buildings e outros eventos empresariais, proporcionando uma experiência personalizada.</p>
+      </div>
+    </section>
+
+    <!-- 2. BATIZADOS, COMUNHÕES E CASAMENTOS -->
+
+    <section class="event-section" id="celebracoes">
+      <div>
+        <p class="event-number">02 / CELEBRAÇÕES</p>
+        <h2>Batizados, Comunhões e Casamentos</h2>
+      </div>
+
+      <div>
+        <p class="event-description">Há dias que merecem ser celebrados com todo o carinho. Criamos o ambiente perfeito para reunir família e amigos, celebrar novas etapas e transformar momentos especiais em recordações inesquecíveis. Da decoração à gastronomia, cada detalhe é pensado para tornar o dia verdadeiramente único.</p>
+      </div>
+    </section>
+
+    <!-- 3. ANIVERSÁRIOS E CELEBRAÇÕES -->
+
+    <section class="event-section" id="aniversarios">
+      <div>
+        <p class="event-number">03 / CELEBRAÇÕES</p>
+        <h2>Aniversários e Celebrações</h2>
+      </div>
+
+      <div>
+        <p class="subtitle">Mais um ano. Mil razões para celebrar.</p>
+
+        <p class="event-description">Há momentos que pedem uma celebração à altura. Um aniversário especial, uma data marcante ou simplesmente a vontade de juntar quem mais importa. No Paraíso Villas &amp; Spa, cada festa ganha personalidade, encanto e o cenário ideal para celebrar sem pressa.</p>
+      </div>
+    </section>
+
+    <!-- 4. CATERING E GASTRONOMIA -->
+
+    <section class="event-section" id="catering">
+      <div>
+        <p class="event-number">04 / GASTRONOMIA</p>
+        <h2>Catering e Gastronomia</h2>
+      </div>
+
+      <div>
+        <p class="subtitle">Sabores que reúnem. Experiências que surpreendem.</p>
+
+        <p class="event-description">Porque todos os grandes momentos também se celebram à mesa. Uma proposta gastronómica pensada para surpreender, com sabores que despertam os sentidos e soluções adaptadas à natureza de cada evento. Levamos o prazer de bem receber a cada ocasião, com atenção ao detalhe e ao gosto de cada anfitrião. Podemos recebê-lo na nossa casa ou ir até à sua.</p>
+      </div>
+    </section>
+
+    <!-- 5. DESPEDIDAS DE SOLTEIRA -->
+
+    <section class="event-section" id="despedidas">
+      <div>
+        <p class="event-number">05 / MOMENTOS ESPECIAIS</p>
+        <h2>Despedidas de solteira</h2>
+      </div>
+
+      <div>
+        <p class="subtitle">Uma amizade. Uma nova aventura. Mil histórias para contar.</p>
+
+        <p class="event-description">Antes do grande dia, celebrem tudo o que vos une. Um encontro entre amigas, momentos de descontração, experiências especiais e tempo para aproveitar cada instante. Criamos o cenário ideal para uma despedida de solteira com personalidade, cumplicidade e aquele toque de magia que faz toda a diferença.</p>
+      </div>
+    </section>
+
+    <!-- 6. RETIROS E EXPERIÊNCIAS WELLNESS -->
+
+    <section class="event-section" id="wellness">
+      <div>
+        <p class="event-number">06 / BEM-ESTAR</p>
+        <h2>Retiros e Experiências Wellness</h2>
+      </div>
+
+      <div>
+        <p class="subtitle">Abrande. Respire. Reconecte-se.</p>
+
+        <p class="event-description">Há momentos em que o melhor plano é parar. Encontre espaço para respirar, recuperar o equilíbrio e voltar ao essencial. O Paraíso Villas &amp; Spa convida à criação de retiros e experiências de bem-estar onde a tranquilidade do ambiente, o cuidado e o tempo para si ganham um novo significado.</p>
+      </div>
+    </section>
+
+    <!-- CONTACTOS -->
+
+    <section class="contact-section" id="contactos">
+      <p class="eyebrow">Vamos planear juntos</p>
+
+      <h2>O seu evento começa aqui</h2>
+
+      <p class="contact-description">
+        Entre em contacto connosco para partilhar a sua ideia
+        e descobrir as possibilidades para o seu evento.
+      </p>
+
+      <div class="contact-links">
+        <a
+          class="contact-button"
+          href="mailto:eventos@paraisovillas.pt?subject=Pedido%20de%20informa%C3%A7%C3%B5es%20sobre%20eventos">
+          Personalize o seu evento
+        </a>
+
+        <a class="contact-detail" href="mailto:eventos@paraisovillas.pt">
+          eventos@paraisovillas.pt
+        </a>
+
+        <a class="contact-detail" href="tel:+351912426598">
+          +351 912 426 598
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><strong>Paraíso Villas &amp; Spa</strong></p>
+    <p>
+      <a href="mailto:eventos@paraisovillas.pt">eventos@paraisovillas.pt</a>
+      &nbsp; · &nbsp;
+      <a href="tel:+351912426598">+351 912 426 598</a>
+    </p>
+  </footer>
+
+</body>
+</html>
