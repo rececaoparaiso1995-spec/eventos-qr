@@ -113,10 +113,11 @@ h1{margin:0;color:var(--brown);font-size:clamp(38px,6vw,62px);letter-spacing:.04
     <a class="btn" href="carta_rest.pdf" target="_blank" rel="noopener">
       <span class="symbol" aria-hidden="true">♨</span><span>Carta do restaurante</span>
     </a>
-    <a class="btn" href="Redes%20Sociais.png" target="_blank" rel="noopener">
-      <span class="symbol" aria-hidden="true">♨</span>
-      <span>Menu Executivo</span>
-    </a>
+    <a class="btn" href="Redes%20Sociais.png" target="_blank" rel="noopener"
+   onclick="return verificarMenuExecutivo(event)">
+  <span class="symbol" aria-hidden="true">♨</span>
+  <span>Menu Executivo</span>
+</a>
     <a class="btn" href="carta_spa.pdf" target="_blank" rel="noopener">
       <span class="symbol" aria-hidden="true">❀</span><span>Carta do Spa</span>
     </a>
@@ -174,5 +175,27 @@ h1{margin:0;color:var(--brown);font-size:clamp(38px,6vw,62px);letter-spacing:.04
     <p class="note">Pevidém · Guimarães</p>
   </footer>
 </main>
+  <script>
+function verificarMenuExecutivo(event) {
+  const dia = new Date().getDay();
+
+  // Sábado (6), domingo (0) ou segunda-feira (1)
+  if (dia === 6 || dia === 0 || dia === 1) {
+    event.preventDefault();
+
+    alert(
+      "Menu Executivo\n\n" +
+      "Informamos que o Menu Executivo está disponível " +
+      "de terça-feira a sexta-feira.\n\n" +
+      "Obrigado pela compreensão."
+    );
+
+    return false;
+  }
+
+  // De terça-feira a sexta-feira, abre a imagem normalmente
+  return true;
+}
+</script>
 </body>
 </html>
