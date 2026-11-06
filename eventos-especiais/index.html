@@ -72,6 +72,72 @@ h1{margin:0;color:var(--brown);font-size:clamp(34px,6vw,58px);letter-spacing:.04
 </main>
 
   <script>
+     // Escreve aqui os nomes exatos das fotos que estão na pasta
+    const FOTOS = [
+      "Jantar Vínico nov 2026",
+      // "foto2.png"
+    ];
+
+    // Plano B automático (só se a lista acima estiver vazia)
+    const owner = "rececaoparaiso1995-spec";
+    const repo = "eventos-qr";          // na outra repo: "eventor-qr"
+    const folder = "eventos-especiais"; // na outra repo: "eventos-especiais"
+
+    const gallery = document.getElementById("gallery");
+    const EXT = /\.(jpe?g|png|gif|webp)$/i;
+
+    const limpar = nome => nome.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ");
+
+    function mostrar(nomes) {
+      gallery.innerHTML = "";
+      if (!nomes.length) {
+        gallery.innerHTML = '<p class="status">Ainda não existem fotografias nesta secção.</p>';
+        return;
+      }
+      nomes.forEach(nome => {
+        const card = document.createElement("article");
+        card.className = "event-card";
+
+        const img = document.createElement("img");
+        img.src = encodeURI(nome); // caminho relativo, na mesma pasta da página
+        img.alt = limpar(nome);
+        img.loading = "lazy";
+
+        const desc = document.createElement("div");
+        desc.className = "event-description";
+        const titulo = document.createElement("h2");
+        titulo.textContent = limpar(nome);
+
+        desc.appendChild(titulo);
+        card.appendChild(img);
+        card.appendChild(desc);
+        gallery.appendChild(card);
+      });
+    }
+
+    async function loadImages() {
+      if (FOTOS.length) { mostrar(FOTOS); return; }
+      try {
+        const r = await fetch(
+          `https://api.github.com/repos/${owner}/${repo}/contents/${folder}`
+        );
+        if (!r.ok) throw new Error("Erro " + r.status);
+        const files = await r.json();
+        mostrar(
+          files
+            .filter(f => f.type === "file" && EXT.test(f.name))
+            .map(f => f.name)
+            .sort((a, b) => a.localeCompare(b, "pt", { numeric: true }))
+        );
+      } catch (e) {
+        gallery.innerHTML =
+          '<p class="status">Não foi possível carregar as fotografias (' +
+          e.message + ').</p>';
+      }
+    }
+
+    loadImages();
+    
     const owner = "rececaoparaiso1995-spec";
     const repo = "eventos-qr";
     const folder = "eventos-especiais";
