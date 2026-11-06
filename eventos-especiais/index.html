@@ -26,6 +26,7 @@ h1{margin:0;color:var(--brown);font-size:clamp(34px,6vw,58px);letter-spacing:.04
 .galeria a{display:block;padding:8px;border:1px solid var(--line);border-radius:3px;background:rgba(255,250,245,.55);transition:border-color .2s ease,transform .2s ease}
 .galeria a:hover{border-color:var(--terracotta);transform:translateY(-2px)}
 .galeria img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
+.galeria .nome{display:block;margin-top:9px;padding:0 4px 4px;color:var(--brown);font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.4;overflow-wrap:anywhere}
 .estado{margin:0 auto;color:var(--muted);font-size:14px;line-height:1.6}
 
 .back{display:inline-block;margin:38px auto 0;padding:13px 19px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--brown);font-size:14px;text-decoration:none;cursor:pointer;transition:background .2s ease,color .2s ease}
@@ -91,14 +92,23 @@ h1{margin:0;color:var(--brown);font-size:clamp(34px,6vw,58px);letter-spacing:.04
       galeria.innerHTML = '<p class="estado">Em breve teremos novidades.</p>';
       return;
     }
-    nomes.forEach(nome => {
+        nomes.forEach(nome => {
       const a = document.createElement("a");
       a.href = encodeURI(nome);
+
       const img = document.createElement("img");
       img.src = encodeURI(nome);
-      img.alt = "Evento especial";
+      // nome sem extensão, com _ e - trocados por espaços
+      const titulo = nome.replace(EXT, "").replace(/[_-]+/g, " ");
+      img.alt = titulo;
       img.loading = "lazy";
+
+      const legenda = document.createElement("span");
+      legenda.className = "nome";
+      legenda.textContent = titulo;
+
       a.appendChild(img);
+      a.appendChild(legenda);
       a.addEventListener("click", e => {
         e.preventDefault();
         document.getElementById("lightboxImg").src = img.src;
@@ -106,7 +116,6 @@ h1{margin:0;color:var(--brown);font-size:clamp(34px,6vw,58px);letter-spacing:.04
       });
       galeria.appendChild(a);
     });
-  }
 
   // Descobre sozinho utilizador/repositório/pasta a partir do endereço do GitHub Pages
   async function listarFotos() {
