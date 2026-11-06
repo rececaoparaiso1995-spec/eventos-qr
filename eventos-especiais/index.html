@@ -75,81 +75,92 @@ h1{margin:0;color:var(--brown);font-size:clamp(34px,6vw,58px);letter-spacing:.04
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><img id="lightboxImg" alt=""></div>
 
-<script>
-  // Plano B: se a lista automática falhar, escreve aqui os nomes das fotos
-  const FOTOS_MANUAL = [
-    // "foto1.jpg",
-    // "foto2.jpg"
-  ];
+  <script>
+    const owner = "rececaoparaiso1995-spec";
+    const repo = "eventor-qr";
+    const folder = "eventos-especiais";
+    const gallery = document.getElementById("gallery");
 
-  const EXT = /\.(jpe?g|png|gif|webp)$/i;
-  const galeria = document.getElementById("galeria");
-  const estado = document.getElementById("estado");
+    const imageExtensions = [
+      ".jpg", ".jpeg", ".png", ".webp", ".gif"
+    ];
 
-  function mostrar(nomes) {
-    galeria.innerHTML = "";
-    if (!nomes.length) {
-      galeria.innerHTML = '<p class="estado">Em breve teremos novidades.</p>';
-      return;
+    async function loadImages() {
+      try {
+        const apiUrl =
+          `https://api.github.com/repos/${owner}/${repo}/contents/${folder}`;
+
+        const response = await fetch(apiUrl, {
+          headers: {
+            "Accept": "application/vnd.github+json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Não foi possível consultar a pasta.");
+        }
+
+        const files = await response.json();
+
+        const images = files
+          .filter(file =>
+            file.type === "file" &&
+            imageExtensions.some(ext =>
+              file.name.toLowerCase().endsWith(ext)
+            )
+          )
+          .sort((a, b) =>
+            a.name.localeCompare(b.name, "pt",
+              { numeric: true, sensitivity: "base" })
+          );
+
+        gallery.innerHTML = "";
+
+        if (images.length === 0) {
+          gallery.innerHTML = `
+            <p class="status">
+              Ainda não existem fotografias nesta secção.
+              Volte mais tarde para descobrir os nossos eventos.
+            </p>
+          `;
+          return;
+        }
+
+        images.forEach(file => {
+          const card = document.createElement("article");
+          card.className = "event-card";
+
+          const img = document.createElement("img");
+          img.src = file.download_url;
+          img.alt = file.name.replace(/\.[^.]+$/, "")
+            .replace(/[_-]+/g, " ");
+          img.loading = "lazy";
+
+          const description = document.createElement("div");
+          description.className = "event-description";
+
+          const title = document.createElement("h2");
+          title.textContent = file.name
+            .replace(/\.[^.]+$/, "")
+            .replace(/[_-]+/g, " ");
+
+          description.appendChild(title);
+          card.appendChild(img);
+          card.appendChild(description);
+          gallery.appendChild(card);
+        });
+
+      } catch (error) {
+        gallery.innerHTML = `
+          <p class="status">
+            Não foi possível carregar as fotografias.
+            Verifique a ligação à Internet e tente novamente.
+          </p>
+        `;
+      }
     }
-        nomes.forEach(nome => {
-      const a = document.createElement("a");
-      a.href = encodeURI(nome);
 
-      const img = document.createElement("img");
-      img.src = encodeURI(nome);
-      // nome sem extensão, com _ e - trocados por espaços
-      const titulo = nome.replace(EXT, "").replace(/[_-]+/g, " ");
-      img.alt = titulo;
-      img.loading = "lazy";
-
-      const legenda = document.createElement("span");
-      legenda.className = "nome";
-      legenda.textContent = titulo;
-
-      a.appendChild(img);
-      a.appendChild(legenda);
-      a.addEventListener("click", e => {
-        e.preventDefault();
-        document.getElementById("lightboxImg").src = img.src;
-        document.getElementById("lightbox").classList.add("aberto");
-      });
-      galeria.appendChild(a);
-    });
-
-  // Descobre sozinho utilizador/repositório/pasta a partir do endereço do GitHub Pages
-  async function listarFotos() {
-    let caminho = location.pathname;
-    if (!caminho.endsWith("/")) caminho = caminho.replace(/[^/]*$/, "");
-    const partes = caminho.split("/").filter(Boolean);
-    const utilizador = location.hostname.split(".")[0];
-    const repo = partes[0];
-    const pasta = partes.slice(1).join("/");
-
-    const r = await fetch(
-      `https://api.github.com/repos/${utilizador}/${repo}/contents/${pasta}`
-    );
-    if (!r.ok) throw new Error("API " + r.status);
-    const ficheiros = await r.json();
-    return ficheiros
-      .filter(f => f.type === "file" && EXT.test(f.name))
-      .map(f => f.name)
-      .sort((a, b) => a.localeCompare(b, "pt", { numeric: true }));
-  }
-
-  if (FOTOS_MANUAL.length) {
-    mostrar(FOTOS_MANUAL);
-  } else {
-    listarFotos().then(mostrar).catch(() => {
-      estado.textContent = "Não foi possível carregar as fotografias.";
-    });
-  }
-
-  const lb = document.getElementById("lightbox");
-  lb.addEventListener("click", () => lb.classList.remove("aberto"));
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") lb.classList.remove("aberto");
-  });
-</script>
+    loadImages();
+  </script>
 </body>
 </html>
